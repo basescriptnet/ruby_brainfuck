@@ -36,13 +36,12 @@ class BrainfuckInterpreter
     def decrement_data_ptr
         @data_ptr -= 1
     end
-
     def increment_byte
-        @memory[@data_ptr] += 1
+        @memory[@data_ptr] = (@memory[@data_ptr] + 1) & 255 # limited byte size
     end
-
+    
     def decrement_byte
-        @memory[@data_ptr] -= 1
+        @memory[@data_ptr] = (@memory[@data_ptr] - 1) & 255 # limited byte size
     end
 
     def output_byte
